@@ -1,9 +1,9 @@
 ##### 如何做CR(code review)
 1. 名词解释
-   cr: code review
-   cl: change list
-   reviewer: the one who reviews your code
-   nit: nitpick 鸡蛋里挑骨头
+   1. cr: code review
+   2. cl: change list
+   3. reviewer: the one who reviews your code
+   4. snit: nitpick 鸡蛋里挑骨头
 2. cr 标准
    1. 开发人员必须在自己负责的任务上有所进展
    2. reviewer要确保整个代码库的整体代码质量不会越来越差（随着时间的推移，代码需要降级才能运行起来，特别是团队收到严重的时间限制时）
