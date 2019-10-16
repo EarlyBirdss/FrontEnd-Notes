@@ -42,6 +42,6 @@
        1. 查看整个上下文以确保改动是否合理
        2. 以整个系统的角度出发，勘察是否增加了不必要的复杂度
    
-![alt 如何code review 思维导图](图片地址)
+![alt 如何code review 思维导图](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/images/how_to_do_code_review.png)
 
 2019.10.15
