@@ -9,3 +9,4 @@
 * 2019.10.23 [JS基础之函数](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%87%BD%E6%95%B0.md)
 * 2019.10.24 [JS基础之引擎底层](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BC%95%E6%93%8E%E5%BA%95%E5%B1%82.md)
 * 2019.10.25 [JS基础之引擎异步处理](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BC%95%E6%93%8E%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86.md)
+* 2019.10.29 [JS基础之生命周期](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
