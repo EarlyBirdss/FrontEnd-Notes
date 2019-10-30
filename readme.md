@@ -10,3 +10,4 @@
 * 2019.10.24 [JS基础之引擎底层](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BC%95%E6%93%8E%E5%BA%95%E5%B1%82.md)
 * 2019.10.25 [JS基础之引擎异步处理](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BC%95%E6%93%8E%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86.md)
 * 2019.10.29 [JS基础之生命周期](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
+* 2010.10.30 [JS基础之闭包和模式](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E9%97%AD%E5%8C%85%E5%92%8C%E6%A8%A1%E5%BC%8F.md)
