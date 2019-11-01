@@ -12,3 +12,4 @@
 * 2019.10.29 [JS基础之生命周期](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.md)
 * 2010.10.30 [JS基础之闭包和模式](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E9%97%AD%E5%8C%85%E5%92%8C%E6%A8%A1%E5%BC%8F.md)
 * 2019.10.31 [JS基础之类型转换和比较](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%AF%94%E8%BE%83.md)
+* 2019.11.01 [JS基础之this](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8Bthis.md)
