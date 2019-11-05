@@ -13,7 +13,7 @@
       3. Interpreter生成ByteCode
       4. profiler
       5. Compiler生成优化后的代码
-    ![alt JS Engine内部工作流程图](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/images/2019.10.17.webp)
+    ![alt JS Engine内部工作流程图](https://raw.githubusercontent.com/EarlyBirdss/FrontEnd-Notes/feature-general/images/2019.10.17.webp)
 4. Interpreter对比Compilter
    1. Interpreter 逐行读取代码并立即执行
    2. Compiler读取全部代码，优化后再生成优化后的代码
@@ -27,11 +27,11 @@
 6. ByteCode
    1. 中间代码，不是底层代码，不能被所有计算器理解及执行，但可以借助虚拟机或V8引擎执行。
 7. JavaScript是一门解释型语言吗？
-   1. 不完成是。 
+   1. 不完成是。
    2. 最早spiderMonkey引擎只有Interpreter来告诉浏览器该怎么执行代码，现在的引擎同时具备Interpreter和Compiler。我们的代码不仅可以被转换为ByteCode，还可以被编译输出优化后的代码。因此，这完全取决于引擎。
-   
 
-![alt 如何code review 思维导图](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/images/JS_engine.png)
+
+![alt JS引擎思维导图](https://raw.githubusercontent.com/EarlyBirdss/FrontEnd-Notes/feature-general/images/JS_engine.png)
 
 #### 原文地址
 [前端早读课第1740期](https://mp.weixin.qq.com/s/qynv4v8nXPSU1XwyjEa62A)

@@ -34,11 +34,11 @@ function callback(){
 }
 ```
 3. setTimeout由浏览器执行，执行完成后将回调传入时间循环的回调队列中，等待函数执行栈为空时，由event loop代入执行栈执行
-   
+
 如下，图1：setTimeout开始执行
-![函数执行示意图](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/images/2019.10.24_1.png)
+![函数执行示意图](https://raw.githubusercontent.com/EarlyBirdss/FrontEnd-Notes/feature-general/images/2019.10.24_1.png)
 如下，图2：setTimeout执行完毕
-![函数执行示意图进入callback队列](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/images/2019.10.24_2.png)
+![函数执行示意图进入callback队列](https://raw.githubusercontent.com/EarlyBirdss/FrontEnd-Notes/feature-general/images/2019.10.24_2.png)
 
 
 #### 解惑
