@@ -14,3 +14,4 @@
 * 2019.10.31 [JS基础之类型转换和比较](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%92%8C%E6%AF%94%E8%BE%83.md)
 * 2019.11.01 [JS基础之this](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8Bthis.md)
 * 2019.11.04 [JS基础之操作文档元素](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E6%93%8D%E4%BD%9C%E6%96%87%E6%A1%A3%E5%85%83%E7%B4%A0.md)
+* 2019.11.06 [JS基础之异步](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BC%82%E6%AD%A5.md)
