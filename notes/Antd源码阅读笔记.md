@@ -5,7 +5,11 @@
 ```
 var _option$mapProps = option.mapProps // mapProps为函数类型
 ```
-
+2. (0, fn)(...fnArg)
+```
+var _defineProperty2 = _interopRequireDefault(_defineProperty);
+(0, _defineProperty2.default)(target, descriptor.key, descriptor);  //
+```
 ##### utils
 1. 扁平化数组
 ```
