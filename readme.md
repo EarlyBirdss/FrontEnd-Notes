@@ -18,3 +18,4 @@
 * 2019.11.07 [JS基础之引擎、调用堆栈](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%9F%BA%E7%A1%80%E4%B9%8B%E5%BC%95%E6%93%8E%E3%80%81%E8%B0%83%E7%94%A8%E5%A0%86%E6%A0%88.md)
 * 2019.11.08 [不良编码习惯](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E4%B8%8D%E8%89%AF%E7%BC%96%E7%A0%81%E4%B9%A0%E6%83%AF.md)
 * 2019.11.11 [React面试知识点](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/React%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9.md)
+* 2019.11.13 [console妙用](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/console%E5%A6%99%E7%94%A8.md)
