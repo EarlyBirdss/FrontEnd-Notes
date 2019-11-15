@@ -20,3 +20,4 @@
 * 2019.11.11 [React面试知识点](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/React%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9.md)
 * 2019.11.13 [console妙用](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/console%E5%A6%99%E7%94%A8.md)
 * 20119.11.14 [理解及使用JavaScript缓存](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E7%90%86%E8%A7%A3%E5%8F%8A%E4%BD%BF%E7%94%A8JavaScript%E7%BC%93%E5%AD%98.md)
+* 2019.11.15 [ES6数组技巧](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/ES6%E6%95%B0%E7%BB%84%E6%8A%80%E5%B7%A7.md)
