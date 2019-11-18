@@ -21,3 +21,4 @@
 * 2019.11.13 [console妙用](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/console%E5%A6%99%E7%94%A8.md)
 * 20119.11.14 [理解及使用JavaScript缓存](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E7%90%86%E8%A7%A3%E5%8F%8A%E4%BD%BF%E7%94%A8JavaScript%E7%BC%93%E5%AD%98.md)
 * 2019.11.15 [ES6数组技巧](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/ES6%E6%95%B0%E7%BB%84%E6%8A%80%E5%B7%A7.md)
+* 2019.11.18 [React性能优化之缓存事件](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/React%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BC%93%E5%AD%98%E4%BA%8B%E4%BB%B6.md)
