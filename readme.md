@@ -19,6 +19,7 @@
 * 2019.11.08 [不良编码习惯](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E4%B8%8D%E8%89%AF%E7%BC%96%E7%A0%81%E4%B9%A0%E6%83%AF.md)
 * 2019.11.11 [React面试知识点](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/React%E9%9D%A2%E8%AF%95%E7%9F%A5%E8%AF%86%E7%82%B9.md)
 * 2019.11.13 [console妙用](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/console%E5%A6%99%E7%94%A8.md)
-* 20119.11.14 [理解及使用JavaScript缓存](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E7%90%86%E8%A7%A3%E5%8F%8A%E4%BD%BF%E7%94%A8JavaScript%E7%BC%93%E5%AD%98.md)
+* 2019.11.14 [理解及使用JavaScript缓存](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E7%90%86%E8%A7%A3%E5%8F%8A%E4%BD%BF%E7%94%A8JavaScript%E7%BC%93%E5%AD%98.md)
 * 2019.11.15 [ES6数组技巧](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/ES6%E6%95%B0%E7%BB%84%E6%8A%80%E5%B7%A7.md)
 * 2019.11.18 [React性能优化之缓存事件](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/React%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BC%93%E5%AD%98%E4%BA%8B%E4%BB%B6.md)
+* 2019.11.21 [JS内存模式](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%86%85%E5%AD%98%E6%A8%A1%E5%BC%8F.md)
