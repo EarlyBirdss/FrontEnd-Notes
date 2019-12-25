@@ -7,7 +7,7 @@
 #### 回调地狱和ES6中的promises
 1. JavaScript 中的回调地狱指的是一种编程风格，其中回调嵌套在回调函数中，而回调函数又嵌套在其他回调函数中
 2. JS的 Promise是未来事件的表示，未来事件处理成功调用resolve回调，处理发生错误调用reject回调
-   
+
 #### promise的错误处理
 ```
 const myPromise = new Promise(function(resolve, reject) {
@@ -39,7 +39,7 @@ getData().then(data => console.log(data));
 
 3. JS引擎是单线程的，这意味着运行函数只有一个调用堆栈。这一限制是JS异步本质的基础:所有需要时间的操作都必须由外部实体(例如浏览器)或回调函数负责。
 
-4. 为了简化异步代码流，ECMAScript 2015 给我们带来了Promise。 Promise 是一个异步对象，用于表示任何异步操作的失败或成功。 但改进并没有止步于此。 在2017年，async/ await诞生了：它是Promise的一种风格弥补，使得编写异步代码成为可能，就好像它是同步的一样。
+4. 为了简化异步代码流，ECMAScript 2015 给我们带来了Promise。Promise是一个异步对象，用于表示任何异步操作的失败或成功。但改进并没有止步于此。在2017年，async/await诞生了：它是Promise的一种风格弥补，使得编写异步代码成为可能，就好像它是同步的一样。
 
 #### 思考
 1. 浏览器如何理解 JS 代码？

@@ -30,7 +30,7 @@ function pow(num) {
 pow(num);
 setTimeout(callback, 10000);
 function callback(){
-    console.log('hello timer!');
+  console.log('hello timer!');
 }
 ```
 3. setTimeout由浏览器执行，执行完成后将回调传入时间循环的回调队列中，等待函数执行栈为空时，由event loop代入执行栈执行
