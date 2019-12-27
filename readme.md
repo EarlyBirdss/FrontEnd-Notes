@@ -24,3 +24,4 @@
 * 2019.11.18 [React性能优化之缓存事件](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/React%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E7%BC%93%E5%AD%98%E4%BA%8B%E4%BB%B6.md)
 * 2019.11.21 [JS内存模式](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E5%86%85%E5%AD%98%E6%A8%A1%E5%BC%8F.md)
 * 2019.12.25 [JS解析抽象语法树](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E8%A7%A3%E6%9E%90%E6%8A%BD%E8%B1%A1%E8%AF%AD%E6%B3%95%E6%A0%91.md)
+* 2019.12.27 [JS模块与模块打包](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E6%A8%A1%E5%9D%97%E4%B8%8E%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85.md)
