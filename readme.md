@@ -29,3 +29,4 @@
 * 2019.12.30 [Proxy巧用](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/Proxy%E5%B7%A7%E7%94%A8.md)
 * 2021.06.29 [实现Promise](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E5%AE%9E%E7%8E%B0Promise.md)
 * 2021.06.30 [性能优化](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
+* 2021.06.30 [http详解](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/http%E8%AF%A6%E8%A7%A3.md)
