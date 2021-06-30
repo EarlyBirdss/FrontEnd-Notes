@@ -27,4 +27,5 @@
 * 2019.12.27 [JS模块与模块打包](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/JS%E6%A8%A1%E5%9D%97%E4%B8%8E%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85.md)
 * 2019.12.30 [为什么let没有被提升](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E4%B8%BA%E4%BB%80%E4%B9%88let%E6%B2%A1%E6%9C%89%E8%A2%AB%E6%8F%90%E5%8D%87.md)
 * 2019.12.30 [Proxy巧用](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/Proxy%E5%B7%A7%E7%94%A8.md)
-* 2021.06.30 [实现Promise](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E5%AE%9E%E7%8E%B0Promise.md)
+* 2021.06.29 [实现Promise](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E5%AE%9E%E7%8E%B0Promise.md)
+* 2021.06.30 [性能优化](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/notes/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
