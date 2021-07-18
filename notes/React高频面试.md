@@ -105,6 +105,16 @@
       * 每个帧（16.6ms内）包括js任务（宏任务、微任务，优先处理事件响应等高优先级任务），render阶段，如果执行完以上阶段仍有时间剩余，称为空闲时间
       * js引擎和页面渲染引擎在同一个线程，GUI渲染和js执行是互斥的
       * 如果某个任务执行时间过长，浏览器会推迟渲染
+      * life of frame
+        1. 输入事件
+          * 阻塞输入事件：touch, wheel
+          * 非阻塞输入事件：click, key press
+        2. Timers 定时器（js）
+        3. 每一帧事件(开始帧)：window.resize, scroll, media query change
+        4. requestAnimationFrame
+        5. 布局： 计算样式、更新布局
+        6. 绘制： 
+        7. 空闲阶段
    * requestIdleCallback
       * 空闲时段内调用的函数排队
       * 正常帧任务完成后没超过16ms，说明时间有空闲，就会执行传入的函数任务
@@ -180,7 +190,7 @@
   * 可能会进行两次遍历，第一次处理属性的更新、第二次处理删除和新增和移动（2次遍历是因为实际项目中，更新的频率更高，是一种优化方案）（如果类型变化的更新（先删除再新增）也算更新在第一次遍历里）
   * 移动的原则是尽可能少动，如果一定要有一个要动那么新的位置中前面的不动后面的动
 * 对比array list
-  * 如果一旦发现key不一样就跳出第一个渲染
+  * 如果一旦发现key不一样就跳出第一次循环
   * 第二次遍历建立一个map:（{key: fiber}形式）方便判断
   * 删除首先执行
   * 如果有需要移动的，新位置需要移到后面去的先移动
@@ -215,6 +225,10 @@ fiber链表 vs effectList链表
 * effectList是归并的思想，从叶子结点开始，一步一步把自己的effect链表归并到父节点上，在归并到祖父节点上，一直到root，在complateWork阶段构建，方便进行dom操作。effectList也是fiber集，但只包含需要进行dom操作的fiber
 老fiber和新jsx对比生成新fiber？？？fiber、jsx结构不同怎么对比？
 * jsx指的是virtural dom
+requestAmimationFrame vs requestIdleCallback
+* 执行的阶段不一样，requestAmimationFrame用于动画，在每一帧绘制前执行，requestIdleCallback在浏览器完成绘制后的空闲时间执行，如果没有空闲时间不执行（requestIdleCallback第二个参数可以传入{timeOut: x}表示如果到xms还没有执行，那么浏览器就必须执行了不等空闲时间阶段里了）
+每一帧里js里宏任务、微任务执行队列怎么对应？在哪个阶段执行的？
+* 事件处理 -> js执行 -> 布局绘制
 
 
 [原文链接](https://www.bilibili.com/video/BV1H54y187W1)
