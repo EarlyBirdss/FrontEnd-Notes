@@ -603,7 +603,7 @@ function reconcilerChildren(currentFiber, newChildren) {
 
 
 
-[该版本的源码实现调用栈流程参见]()
+[该版本的源码实现调用栈流程参见](https://github.com/EarlyBirdss/FrontEnd-Notes/blob/feature-general/xmind/React16%2B.xmind)
 [原文链接](https://www.bilibili.com/video/BV16V411672B?p=2&spm_id_from=pageDriver)
 
 2021.07.18
