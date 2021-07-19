@@ -113,7 +113,7 @@
         3. 每一帧事件(开始帧)：window.resize, scroll, media query change
         4. requestAnimationFrame
         5. 布局： 计算样式、更新布局
-        6. 绘制： 
+        6. 绘制：
         7. 空闲阶段
    * requestIdleCallback
       * 空闲时段内调用的函数排队
@@ -224,7 +224,7 @@ fiber链表 vs effectList链表
 * fiber链表是根据深度优先构造的链表结构，在beginWork阶段构建，根据nextChildren构建的
 * effectList是归并的思想，从叶子结点开始，一步一步把自己的effect链表归并到父节点上，在归并到祖父节点上，一直到root，在complateWork阶段构建，方便进行dom操作。effectList也是fiber集，但只包含需要进行dom操作的fiber
 老fiber和新jsx对比生成新fiber？？？fiber、jsx结构不同怎么对比？
-* jsx指的是virtural dom
+* jsx指的是virtural dom, fiber是在virturalDOM基本上创建的，两者结构、信息差不多
 requestAmimationFrame vs requestIdleCallback
 * 执行的阶段不一样，requestAmimationFrame用于动画，在每一帧绘制前执行，requestIdleCallback在浏览器完成绘制后的空闲时间执行，如果没有空闲时间不执行（requestIdleCallback第二个参数可以传入{timeOut: x}表示如果到xms还没有执行，那么浏览器就必须执行了不等空闲时间阶段里了）
 每一帧里js里宏任务、微任务执行队列怎么对应？在哪个阶段执行的？

@@ -88,7 +88,9 @@ function beginWork(currentFiber) {
         updateHostText(currentFiber);
     } else if (currentFiber.tag === 'TAG_HOST' {
         updateHost(currentFiber);
-    })
+    } else if (currentFiber.tag === 'TAG_CLASS') {
+        updateClassComponent(currentFiber);
+    }
 }
 
 function updateHostRoot(currentFiber) {
@@ -184,7 +186,7 @@ function completeUnitOfWork(currentFiber) {
 ```js
 let workInProgressRoot = A;
 function commitRoot() {
-    deletions.forEach(commitWork);
+    deletions.forEach(commitWork); // 删除首先执行
     let currentFiber = workInProgressRoot.firstEffet;
     while(currentFiber) {
         commitWork(currentFiber);
@@ -193,6 +195,48 @@ function commitRoot() {
     workInProgressRoot = null;
 }
 
+function commitWork(currentFiber) {
+    const returnFiber = currentFiber.return;
+    if (currentFiber.effectTag === 'PLACEMENT') {
+        returnFiber.stateNode.appendChild(currentFiber.stateNode);
+    } else if (currentFiber.effectTag === 'DELETION') {
+        returnFiber.stateNode.removeChild(currentFiber.stateNode);
+    }
+}
+```
+
+#### fiber双缓存（非初次渲染时）
+优化原因：不停的创建新的fiber又回收fiber浪费性能
+```js
+let currentRoot = null;
+let nextUnitOfWork = null;
+let workInProgressRoot = null;
+let deletions = []; // 要删除的节点并没有放在effectList中
+function scheduleRoot(rootFiber) {
+    if (currentRoot && currentRoot.alternate) { // 不是第一次渲染也不是第一次更新（复用第一颗树）
+        workInProgresssRoot = currentRoot.alternate;
+        workInProfressRoot.alternate = currtRoot;
+        if (rootFiber) workInProgressRoot.props = rootFiber.props;
+    }
+    if (currentRoot) { // 不是第一次渲染，但是第一次更新（第二棵树）
+        if (rootFiber) {
+            rootFiber.alternate = currentRoot;
+            workInProgressRoot = rootFiber;
+        } else {
+            workInProgressRoot  = {
+                ...currentRoot,
+                alternate: currentRoot
+            }
+        }
+    } else { // 第一次渲染(第一颗书)
+        workInProgressRoot = rootFiber;
+    }
+    workInProgressRoot.firstEffect = workInProgressRoot.lastEffect = workInProgressRoot.nextEffect = null;
+    nextUnitOfWork = workInProgressRoot;
+}
+```
+更新阶段commitWork增加update操作
+```js
 function commitWork(currentFiber) {
     const returnFiber = currentFiber.return;
     if (currentFiber.effectTag === 'PLACEMENT') {
@@ -210,23 +254,232 @@ function commitWork(currentFiber) {
     }
 }
 ```
-
-#### 双缓存
+更新阶段reconcileChildren增加新旧节点判断（通过alternate指针）
 ```js
-let currentRoot = null;
-let nextUnitOfWork = null;
-let workInProgressRoot = null;
-let delitions = []; // 要删除的节点并没有放在effectList中
-function scheduleRoot(rootFiber) {
-    if (currentRoot) { // 不是第一次渲染
-        rootFiber.alternate = currentRoot;
-        workInProgressRoot = rootFiber;
-    } else {
-        workInProgressRoot = rootFiber;
+function reconcilerChildren(currentFiber, newChildren) {
+    let newChildIndex = 0;
+    let prevSibling = null;
+    let newFiber;
+    const oldFiber = currentFiber.alternate && currentFiber.alternate.child;
+    oldFiber.firstEffect = oldFiber.lastEffect = oldFiber.nextEffect = null;
+    while(newChildIndex < newChildren.length) {
+        let newChild = newChildren[newChildIndex];
+        let tag;
+        const sameType = oldFiber && newChild && oldFiber.type === newChild.type;
+        if (newChild && newChild.type === 'ELEMENT_TEXT') {// 文本节点
+            tag = 'TAG_TEXT';
+        } else if (newChild && typeof newChild.type === 'string') { // 原生标签
+            tag = 'TAG_HOST';
+        }
+        if (sameType) {
+            newFiber = oldFiber;
+            newFiber.props = newChild.props;
+            newFiber.effectTag = 'UPDATE';
+            newFiber.alternate = oldFiber;
+            newFiber.nextEffect = null;
+        } else {
+            if (newChild) {
+                newFiber = {
+                    tag,
+                    type: newChild.type,
+                    stateNode: null, // 真实DOM节点
+                    props: newChild.props,
+                    return: currentFiber,
+                    effectTag: 'PLACEMENT',
+                    nextEffect: null,
+                };
+            }
+            if (oldFiber) {
+                oldFiber.effectTag = 'DELETION';
+            }
+        }
+        if (oldFiber) {
+            oldFiber = oldFiber.sibling;
+        }
+        if (newFiber) { // 这里判断是干嘛？？？ fiber可以在更新阶段被删除了，可能为null
+            if (newChildIndex === 0) {
+                currentFiber.child = newChild;
+            } else {
+                prevSibing.sibling = newFiber;
+            }
+            prevSibing = newFiber;
+        }
+        newChildIndex++;
     }
-    nextUnitOfWork = workInProgressRoot;
 }
 ```
+
+#### 实现类组件
+```js
+class Component {
+    constructor(props) {
+        this.props = props;
+        this.updateQueue = new UpdateQueue();
+    }
+
+    setState(payload) {
+        let update = new update(payload);
+        this.updateQueue.enqueueUpdate(update);
+        scheduleRoot();
+    }
+}
+Component.protype.isReactComponent = {};
+
+class Update {
+    constroctor(payload) {
+        this.payload = payload;
+    }
+}
+
+class UpdateQueue {
+    constructor() {
+        this.firstUpdate = null;
+        this.lastUpdate = null;
+    }
+    enqueueUpdate(update) {
+        if (this.lastUpdate === null) {
+            this.firstUpdate = this.lastUpdate = update;
+        } else {
+            this.lastUpdate.nextUpdate = update;
+            this.lastUpdate = update;
+        }
+    }
+    forceUpdate(state) {
+        let currentUpdate = this.firstUpdate;
+        while (currentUpdate) {
+            let nextState = typeof currentUpdate.payload === 'function' ?currentUpdate.payload() : currentUpdate.payload;
+            state = { ...state, ...nextState };
+            currentUpdate = currentUpdate.nextUpdate;
+        }
+        this.firstUpdate = this.lastUpdate = null;
+        return state;
+    }
+}
+
+function updateClassComponent(currentFiber) {
+    if (!currentFiber.stateNode) {
+        currentFiber.stateNode = new currentFiber.type(currentFiber.props);
+        currentFiber.stateNode.internalFiber = currentFiber;
+        currentFiber.updateQueue = new UpdateQueue();
+    }
+    currentFiber.stateNode.state = currentFiber.updateQueue.forceUpdate();
+    let newElement = currentFiber.stateNode.render();
+    const newChildren = [newElement];
+    reconsolerChiren(currentFiber, newChildren);
+}
+```
+更新reconcilerChildren方法
+```js
+
+function reconcilerChildren(currentFiber, newChildren) {
+    let newChildIndex = 0;
+    let prevSibling = null;
+    let newFiber;
+    const oldFiber = currentFiber.alternate && currentFiber.alternate.child;
+    oldFiber.firstEffect = oldFiber.lastEffect = oldFiber.nextEffect = null;
+    while(newChildIndex < newChildren.length) {
+        let newChild = newChildren[newChildIndex];
+        let tag;
+        const sameType = oldFiber && newChild && oldFiber.type === newChild.type;
+        if (newChild && typeof newChild.type === 'function' && newChild.type.proprotype.isReactComponent) {
+            tag = 'TAG_COMPONENT';
+        } else if (newChild && newChild.type === 'ELEMENT_TEXT') {// 文本节点
+            tag = 'TAG_TEXT';
+        } else if (newChild && typeof newChild.type === 'string') { // 原生标签
+            tag = 'TAG_HOST';
+        }
+        if (sameType) {
+            if (oldFiber.alternate) {
+                newFiber = oldFiber;
+                newFiber.props = newChild.props;
+                newFiber.effectTag = 'UPDATE';
+                newFiber.alternate = oldFiber;
+                newFiber.updateQueue = oldFiber.updateQueue || new UpdateQueue();
+                newFiber.nextEffect = null;
+            } else {
+                newFiber = {
+                    tag,
+                    type: newChild.type,
+                    stateNode: null, // 真实DOM节点
+                    props: newChild.props,
+                    return: currentFiber,
+                    effectTag: 'PLACEMENT',
+                    updateQueue: oldFiber.updateQueue || new UpdateQueue(),
+                    nextEffect: null,
+                };
+            }
+        } else {
+            if (newChild) {
+                newFiber = {
+                    tag,
+                    type: newChild.type,
+                    stateNode: null, // 真实DOM节点
+                    props: newChild.props,
+                    return: currentFiber,
+                    effectTag: 'PLACEMENT',
+                    updateQueue: oldFiber.updateQueue || new UpdateQueue(),
+                    nextEffect: null,
+                };
+            }
+            if (oldFiber) {
+                oldFiber.effectTag = 'DELETION';
+            }
+        }
+        if (oldFiber) {
+            oldFiber = oldFiber.sibling;
+        }
+        if (newFiber) { // 这里判断是干嘛？？？ fiber可以在更新阶段被删除了，可能为null
+            if (newChildIndex === 0) {
+                currentFiber.child = newChild;
+            } else {
+                prevSibing.sibling = newFiber;
+            }
+            prevSibing = newFiber;
+        }
+        newChildIndex++;
+    }
+}
+```
+commitWork更新
+```js
+function commitWork(currentFiber) {
+    let returnFiber = currentFiber.return;
+    // 向下找能挂载的容器(真实节点)
+    while (returnFiber.tag !== 'TAG_HOST' && returnFiber.tag !== 'TAG_ROOT' && returnFiber.tag !== 'TAG_TEXT') {
+        returnFiber = returnFiber.return;
+    }
+    if (currentFiber.effectTag === 'PLACEMENT') {
+        // 向下找能挂载的真实节点
+        let nextFiber;
+        while (nextFiber.tag !== 'TAG_HOST' && nextFiber.tag !== 'TAG_ROOT' && nextFiber.tag !== 'TAG_TEXT') {
+            returnFiber = nextFiber.return;
+        }
+        returnFiber.stateNode.appendChild(currentFiber.stateNode);
+    } else if (currentFiber.effectTag === 'DELETION') {
+        commitDeletion(currentFiber, returnFiber.stateNode);
+    } else if (currentFier.effectTag === 'UPDATE') {
+        if (currentFiber.type === 'ELEMENT_TEXT') {
+            if (currentFiber.alternate.props.text !== currentFiber.props.text) {
+                currentFiber.stateNode.textContent = currentFiber.props.text;
+            }
+        } else {
+            updateDOM(currentFiber.stateNode, currentFiber.alternate.props, currentFiber.props)
+        }
+    }
+}
+
+function commitDeletion(currentFiber, domReturn) {
+    if (currentFiber.tag === 'TAG_HOST' || currentFiber.tag === 'TAG_TEXT') {
+       domReturn.removeChild(currentFiber.stateNode);
+    } else {
+
+    }
+}
+```
+
+#### 实现函数组件
+
+
 
 #### 其他
 1. vue 与 react
