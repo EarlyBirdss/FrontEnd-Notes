@@ -80,6 +80,140 @@
 ##### 搭配React
 * 使用Provider功能以便每一个组件都能访问store
 
+#### 高级
+
+##### 异步Action
+* Redux-thunk
+  * applyMiddleware
+    ```js
+    const store = createStore(reducer, preloadedState, applyMiddleware(thunkMiddleware))
+    ```
+
+##### 异步数据流
+* Redux-thunk
+* Redux-promise
+* middleware链的最后一个middleware必须dispatch一个action
+
+##### Middleware
+* 指可以被嵌入在框架接收请求到产生响应过程之中的代码
+* 特性是可以被链式组合
+* 提供的是位于 action 被发起之后，到达 reducer 之前的扩展点
+
+##### 搭配React Router
+* connect(mapStateToProps)(<MyComponent />)
+
+#### 技巧
+
+##### 使用扩展运算符
+
+##### 减少样板代码
+* Action Createor，一个函数，返回一个action对象
+  * 某种情况下具有优势，提前判断、逻辑共享
+
+##### 组织Reducer
+* Reducer基础概念
+* Reducer基础结构
+* Reducer逻辑拆分
+* combineReducer用法
+* state范式化
+  * 按类型分
+  * id作为key
+  ```js
+  // 原始结构
+  posts = [{
+    id,
+    author: { userId, userName },
+    body,
+    comments: [{ id, author: { userName, userId }, comment }];
+  }]
+
+  // 范式化后
+  {
+    posts: {
+      byId: {
+        '1': { id, author: '1', comment: ['1'], body },
+      },
+      allId: ['1', '2']
+    },
+    user: {
+      byId: {
+        '1': { userId, userName }
+      },
+      allId: ['1', '2']
+    },
+    comments: {
+      byId: {
+        '1': { id, author, comment }
+      },
+      allId: ['1']
+    }
+  }
+  ```
+
+#### 常见问题
+* props.dispatch: connect有两个参数mapStateToProps, mapDispatchToProps, 如果没有传入mapDispatchToProps，redux将默认把dispatch注入组件props，如果传了mapDispatchToProps，就不会自动注入
+
+#### 词汇表
+* reducer
+  * reducer概念不是redux创造的，在JS中有Array.prototype.reduce
+  * 意思是累进计算，由上次的累积的结果state与当前累积的action计算得到下一个结果state
+
+#### Api
+* bindActionCreators(actionCreators, dispatch)
+  * 返回actionDispatchers, 返回的对象函数可以直接调用不需要通过dispatch
+  ```js
+  function mapDispatchToProps(dispatch) {
+    return { actions: bindActionCreators(actionCreators, dispatch) }
+  }
+
+  export default connect(null, mapDispatchToProps)(App)
+  ```
+* compose
+  * 从左到右组合多个函数
+  * compose(funcA, funcB, funcC) -> compose(funcA(funcB(funcC())))
+  ```js
+  store = createStore(reducer, compose(
+    applyMiddleware(thunk),
+    DevTools.instrument()
+  ));
+  ```
+
+#### React-redux
+##### API
+* connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+  * mergeProps(stateProps, dispatchProps, ownProps): props
+  * options: { isPure: true(shouldComponentUpdate进行浅比较), withRef: false }
+  * 常见问题
+    * export default connect(state => state)(TodoApp)
+      * 注入 dispatch 和全局 state，这样会导致每次 action 都触发整个 TodoApp 重新渲染。
+      * 正确做法：每个组件只监听它所关联的部分 state
+
+#### compose源码实现
+```js
+export default function compose(...funcs) {
+  if (funcs.length === 0) {
+    return arg => arg
+  }
+
+  if (funcs.length === 1) {
+    return funcs[0]
+  }
+
+  return funcs.reduce((a, b) => (...args) => a(b(...args)))
+}
+```
+[redux源码仓库](https://github.com/reduxjs/redux/tree/v3.7.2)
+
+#### 其他扩展
+* 扩展运算符 {...obj1, ...obj2} vs Object.assign(obj1, obj2);
+  * newObj = {...obj1} / newObj = Object.assign({}, obj1)效果一样的，但如果Object.assign的第一个参数不是空对象，那么第二个参数将会修改第一个参数
+  * 扩展运算符更简洁性能好，推荐使用
+* [1, 2].slice() // 复制一个数组
+
+#### 疑问梳理
+* 为什么state要可序列化（即JSON.stringify(state)）
+  * symbol不可被序列化
+
 [原文链接](https://www.redux.org.cn/)
 
 2021.07.20
