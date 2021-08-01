@@ -1,4 +1,4 @@
-### webpack4.0原理到实战
+### webpack4原理到实战
 
 #### bunlde文件结构
 * 自执行function
